@@ -120,8 +120,10 @@ vendor.mtk.c2   u:object_r:vendor_mtk_c2_log_prop:s0
 
 # video log omx.* property
 vendor.mtk.omx. u:object_r:vendor_mtk_omx_log_prop:s0
+vendor.mtk.omx.x_ray. u:object_r:vendor_mtk_omx_x_ray_prop:s0
 
 vendor.mtk.vdec.log u:object_r:vendor_mtk_vdec_log_prop:s0
+vendor.vdecomx.hdr-type u:object_r:vendor_mtk_vdecomx_hdr_type_prop:s0
 
 vendor.mtk.vdectlc.log u:object_r:vendor_mtk_vdectlc_log_prop:s0
 
@@ -164,6 +166,7 @@ vendor.debug.sf.hwc_pid           u:object_r:vendor_mtk_graphics_hwc_pid_prop:s0
 vendor.debug.sf.hdr_enable        u:object_r:vendor_mtk_graphics_hwc_hdr_prop:s0
 vendor.debug.sf.validate_separate u:object_r:vendor_mtk_graphics_hwc_validate_separate_prop:s0
 vendor.debug.sf.latch_unsignaled  u:object_r:vendor_mtk_graphics_hwc_latch_unsignaled_prop:s0
+vendor.hwc.video_mode             u:object_r:vendor_mtk_graphics_hwc_video_mode_prop:s0
 
 # sf vendor cpupolicy config
 vendor.debug.sf.cpupolicy  u:object_r:vendor_mtk_debug_sf_cpupolicy_prop:s0
@@ -358,6 +361,10 @@ ro.vendor.input.touch_report_rate u:object_r:vendor_mtk_input_report_rate_prop:s
 # video property
 vendor.mtkomx.color.convert u:object_r:vendor_mtk_video_prop:s0
 vendor.mtk.c2.vdec.fmt.disabled.whitelist u:object_r:vendor_mtk_video_prop:s0
+ro.vendor.mtk_crossmount_support u:object_r:vendor_mtk_video_prop:s0
+ro.vendor.mtk_crossmount.maxcount u:object_r:vendor_mtk_video_prop:s0
+ro.vendor.mtk_deinterlace_support u:object_r:vendor_mtk_video_prop:s0
+ro.vendor.mtk_hdr_video_support u:object_r:vendor_mtk_video_prop:s0
 
 # config no bt multidevice performance according to chip
 ro.vendor.bluetooth.bt_multidevice_perform u:object_r:vendor_mtk_default_prop:s0

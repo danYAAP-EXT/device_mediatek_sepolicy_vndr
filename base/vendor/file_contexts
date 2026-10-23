@@ -177,6 +177,8 @@
 /dev/camera-rsc(/.*)?     u:object_r:camera_rsc_device:s0
 /dev/camera-gepf(/.*)?    u:object_r:camera_gepf_device:s0
 /dev/camera-wpe(/.*)?     u:object_r:camera_wpe_device:s0
+/dev/vpp-wpe-a(/.*)?      u:object_r:camera_wpe_device:s0
+/dev/vpp-wpe-b(/.*)?      u:object_r:camera_wpe_device:s0
 /dev/camera-owe(/.*)?     u:object_r:camera_owe_device:s0
 /dev/camera-mfb(/.*)?     u:object_r:camera_mfb_device:s0
 /dev/camera-pda(/.*)?     u:object_r:camera_pda_device:s0
@@ -465,6 +467,7 @@
 
 /dev/stpant(/.*)?   u:object_r:stpant_device:s0
 /dev/stpbt(/.*)?    u:object_r:stpbt_device:s0
+/dev/connsys_bt     u:object_r:connsys_bt_state_device:s0
 /dev/fw_log_bt      u:object_r:fw_log_bt_device:s0
 /dev/fw_log_btmcu   u:object_r:fw_log_btmcu_device:s0
 
@@ -523,6 +526,7 @@
 /dev/conn_pwr_dev(/.*)?      u:object_r:conn_pwr_device:s0
 /dev/conn_scp(/.*)?       u:object_r:conn_scp_device:s0
 /dev/wmtWifi(/.*)?        u:object_r:wmtWifi_device:s0
+/dev/connsys_wifi        u:object_r:connsys_wifi_device:s0
 /dev/ancservice(/.*)?     u:object_r:ancservice_device:s0
 /dev/offloadservice(/.*)? u:object_r:offloadservice_device:s0
 /dev/audio_ipi(/.*)?      u:object_r:audio_ipi_device:s0
@@ -546,7 +550,6 @@
 /dev/nebula-ipc-dev0   u:object_r:tee_device:s0
 /dev/trustzone         u:object_r:tee_device:s0
 /dev/mbim              u:object_r:mbim_device:s0
-/dev/alarm(/.*)?       u:object_r:alarm_device:s0
 /dev/radio(/.*)?       u:object_r:mtk_radio_device:s0
 /dev/mml_pq     u:object_r:mml_pq_device:s0
 
@@ -709,6 +712,7 @@
 /dev/block/by-name/rot_boot_fw(_[ab])?              u:object_r:rotfw_block_device:s0
 /dev/block/by-name/rot_boot_fmc(_[ab])?             u:object_r:rotfw_block_device:s0
 /dev/block/by-name/ise(_[ab])?                      u:object_r:ise_block_device:s0
+/dev/block/by-name/emiupfw(_[ab])?                  u:object_r:emiupfw_block_device:s0
 
 # W19.23 Q new feature - Userdata Checkpoint
 /dev/block/by-name/md_udc u:object_r:metadata_block_device:s0
@@ -907,6 +911,10 @@
 # Trustkernel
 /(vendor|system/vendor)/bin/hw/android\.hardware\.security\.keymint(@[0-9]+\.0+)?-service\.trustkernel u:object_r:hal_keymint_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android.hardware.gatekeeper-service.trustkernel u:object_r:hal_gatekeeper_default_exec:s0
+
+# OP-TEE
+/(vendor|system/vendor)/bin/hw/android\.hardware\.keymaster@4\.0-service\.optee           u:object_r:hal_keymaster_default_exec:s0
+/data/vendor/tee(/.*)?                                                                   u:object_r:tee_data_file:s0
 
 # MiTEE
 /(vendor|system/vendor)/bin/hw/android\.hardware\.gatekeeper-service\.mitee               u:object_r:hal_gatekeeper_default_exec:s0
@@ -1275,6 +1283,8 @@
 /vendor/lib(64)?/vendor\.mediatek\.hardware\.mmlpq-V[0-9]+-ndk\.so u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/libdpframework\.so                               u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/mt[0-9]+[a-z]*/libdpframework\.so                u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libteec\.so                                      u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libtz_uree\.so                                   u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/libpq_cust\.so                                   u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/libpq_cust_base\.so                              u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/mt[0-9]+[a-z]*/libpq_cust_base\.so               u:object_r:same_process_hal_file:s0
@@ -1405,6 +1415,7 @@
 # Power
 /(vendor|system/vendor)/bin/hw/android\.hardware\.power-service\.mediatek-libperfmgr      u:object_r:hal_power_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.mediatek\.hardware\.mtkpower@1\.2-service\.stub    u:object_r:mtk_hal_power_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.mediatek\.hardware\.mtkpower-service\.stub         u:object_r:mtk_hal_power_exec:s0
 
 # Memtrack
 /(vendor|system/vendor)/bin/hw/android\.hardware\.memtrack-service\.mediatek-mali         u:object_r:hal_memtrack_default_exec:s0
@@ -1461,3 +1472,7 @@
 
 # iSE app loader
 /(vendor|system/vendor)/bin/ise_apploader   u:object_r:ise_apploader_exec:s0
+
+# Virtual Machines
+/dev/pkvm_vendor_mtk_tz                                                                    u:object_r:pkvm_mtk_tz_device:s0
+/vendor/bin/hw/android.hardware.virtualization.capabilities.capabilities_service-mtk_tz    u:object_r:hal_vm_capabilities_default_exec:s0
