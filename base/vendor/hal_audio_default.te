@@ -230,3 +230,9 @@ get_prop(hal_audio_default, vendor_mtk_audio_prop)
 set_prop(hal_audio_default, vendor_mtk_audio_prop)
 
 allow hal_audio_default sysfs_headset:file r_file_perms;
+
+# Allow to set audio log tags
+set_prop(hal_audio_default, log_tag_prop)
+
+# Allow to search in persist
+allow hal_audio_default persist_data_file:dir search;
